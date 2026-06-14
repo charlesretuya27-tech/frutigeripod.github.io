@@ -1,0 +1,306 @@
+*{
+box-sizing:border-box;
+user-select:none;
+font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+
+/* 🌫️ REMOVE PAGE BACKGROUND COMPLETELY */
+body{
+margin:0;
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:transparent !important;
+
+overflow:hidden;
+}
+
+/* OPTIONAL: REMOVE ANY PAGE ARTIFACTS */
+body::before,
+body::after{
+display:none !important;
+content:none !important;
+}
+
+/* 🌊 IPOD BODY */
+#ipod{
+width:320px;
+height:520px;
+
+border-radius:55px;
+
+background:linear-gradient(145deg,#fefefe,#dcdcdc);
+
+box-shadow:
+0 30px 70px rgba(0,0,0,.35),
+inset 0 0 0 10px rgba(255,255,255,.75),
+inset 0 -10px 25px rgba(0,0,0,.08);
+
+padding:20px;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:space-between;
+
+position:relative;
+}
+
+/* 🌊 SCREEN (FRUTIGER AERO GLASS) */
+#screen{
+width:100%;
+height:240px;
+
+border-radius:20px;
+
+background:linear-gradient(180deg,rgba(135,206,235,.85),rgba(180,255,240,.6));
+
+box-shadow:
+inset 0 0 0 5px rgba(255,255,255,.8),
+inset 0 0 25px rgba(0,0,0,.25);
+
+position:relative;
+
+overflow:hidden;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+/* GLASS REFLECTION */
+#screen::before{
+content:"";
+position:absolute;
+inset:0;
+
+background:linear-gradient(120deg,
+rgba(255,255,255,.6),
+rgba(255,255,255,.15),
+rgba(255,255,255,.35));
+
+opacity:.5;
+
+z-index:1;
+
+pointer-events:none;
+}
+
+/* 💿 ALBUM ART */
+#album-art{
+width:140px;
+height:140px;
+
+margin-top:18px;
+
+border-radius:18px;
+
+overflow:hidden;
+
+position:relative;
+z-index:2;
+
+box-shadow:
+0 12px 25px rgba(0,0,0,.25),
+inset 0 0 0 3px rgba(255,255,255,.6);
+}
+
+#album-art img{
+width:100%;
+height:100%;
+object-fit:cover;
+
+position:absolute;
+inset:0;
+
+opacity:0;
+transition:.4s ease;
+}
+
+#album-art img.active{
+opacity:1;
+}
+
+/* 📄 INFO PANEL */
+#track-info{
+width:100%;
+
+margin-top:auto;
+
+padding:8px 10px;
+
+z-index:2;
+
+background:rgba(255,255,255,.7);
+
+backdrop-filter:blur(10px);
+
+border-radius:0 0 20px 20px;
+
+text-align:center;
+}
+
+/* TEXT */
+#album-name{
+font-size:12px;
+font-weight:700;
+
+color:#1d5f55;
+
+text-shadow:0 1px 0 rgba(255,255,255,.6);
+}
+
+#track-name{
+font-size:10px;
+
+color:#2c2c2c;
+
+margin-top:2px;
+}
+
+/* TIME */
+#track-time{
+display:flex;
+justify-content:space-between;
+
+font-size:9px;
+
+margin-top:3px;
+
+color:#1f3d3a;
+
+opacity:.85;
+}
+
+/* 🎵 SEEK BAR */
+#seek-bar-container{
+width:100%;
+height:4px;
+
+margin-top:4px;
+
+border-radius:10px;
+
+background:rgba(255,255,255,.6);
+
+box-shadow:inset 0 1px 2px rgba(0,0,0,.2);
+
+overflow:hidden;
+}
+
+#seek-bar{
+width:0%;
+height:100%;
+
+background:linear-gradient(90deg,#00d9ff,#00ffb3);
+
+border-radius:10px;
+
+box-shadow:0 0 8px rgba(0,255,200,.6);
+
+transition:.2s ease;
+}
+
+/* 🎛 WHEEL */
+#wheel{
+width:180px;
+height:180px;
+
+border-radius:50%;
+
+position:relative;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:radial-gradient(circle,#ffffff,#d6d6d6,#cfcfcf);
+
+box-shadow:
+0 15px 25px rgba(0,0,0,.25),
+inset 0 0 12px rgba(255,255,255,.9),
+inset 0 -6px 12px rgba(0,0,0,.15);
+}
+
+/* CENTER BUTTON */
+#wheel-center{
+width:70px;
+height:70px;
+
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:linear-gradient(145deg,#e8fbff,#c9f7ff);
+
+box-shadow:
+inset 0 2px 4px rgba(255,255,255,.8),
+0 4px 10px rgba(0,0,0,.2);
+
+z-index:2;
+}
+
+/* PLAY BUTTON */
+#play-pause-button{
+width:60px;
+height:60px;
+
+border-radius:50%;
+
+background:#87CEEB;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+cursor:pointer;
+}
+
+#play-pause-button i{
+color:white;
+font-size:18px;
+}
+
+/* SIDE BUTTONS */
+.wheel-btn{
+position:absolute;
+
+width:44px;
+height:44px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+border-radius:50%;
+
+background:#dff6ff;
+
+box-shadow:0 3px 8px rgba(0,0,0,.2);
+
+cursor:pointer;
+
+z-index:3;
+}
+
+#play-previous{
+left:8px;
+top:50%;
+transform:translateY(-50%);
+}
+
+#play-next{
+right:8px;
+top:50%;
+transform:translateY(-50%);
+}
+
+.wheel-btn i{
+font-size:14px;
+color:#1d5f55;
+}
